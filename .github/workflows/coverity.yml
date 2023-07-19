@@ -18,15 +18,16 @@ on:
   # Allows to call this workflow from other workflows
   workflow_call:
 jobs:
-  runs-on:
-    ubuntu-latest
-  steps:
-  - uses: actions/checkout@v3
-  - uses: intel-innersource/frameworks.actions.setup-coverity@v1
-    with:
-      version: 2022.3.1
-  - uses: intel-innersource/frameworks.actions.coverity-analysis@v3
-    with:
-      source: pysvtools
-      html-dir: html_report
-      fail-if-issues-found: true
+  Run-Coverity-Analysis:
+    runs-on:
+      ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: intel-innersource/frameworks.actions.setup-coverity@v1
+      with:
+        version: 2022.3.1
+    - uses: intel-innersource/frameworks.actions.coverity-analysis@v3
+      with:
+        source: pysvtools
+        html-dir: html_report
+        fail-if-issues-found: true
